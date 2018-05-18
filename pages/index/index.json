@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "smsvercode": "plugin://smsvercode/smsvercode"
+  },
+  "navigationBarTitleText": "组件验证"
+}

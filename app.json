@@ -1,0 +1,12 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/api/index"
+  ],
+  "plugins": {
+    "smsvercode": {
+      "version": "dev",
+      "provider": "wx47025434eb041672"
+    }
+  }
+}

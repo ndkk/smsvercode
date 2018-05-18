@@ -1,0 +1,22 @@
+<view class="totalpage">
+<form bindsubmit="formSubmit">
+  <view class='flexrow'>
+    <view class='rowleft'>
+      手机号：</view>
+    <view class='rowmiddle'>
+      <input name='phonenumber' value='{{phonenumber}}' placeholder='输入手机号码' bindinput='bindphonenumber' type='number' maxlength='11' />
+    </view>    
+  </view>
+  <view class='flexrow'>
+    <view class='rowleft'>
+      验证码：</view>
+    <view class='rowmiddle_phone'>
+      <input name='vercode' placeholder='输入6位验证码' type='number' maxlength='6' />
+    </view>
+    <view class='rowright_phone geo' bindtap='getcode'>获取验证码</view>
+  </view>
+  <view class='btn'>
+    <button type='primary' form-type="submit">提交</button>
+  </view>
+</form>
+</view>

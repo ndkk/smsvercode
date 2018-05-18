@@ -1,0 +1,40 @@
+.totalpage{
+  margin:20rpx;
+  font-size: 30rpx;
+}
+
+.flexrow {
+  display: flex;
+  flex-direction: row;
+  margin: 10rpx;
+  padding: 10rpx 5rpx;  
+}
+
+.rowleft{
+  width: 20%;  
+}
+
+.rowmiddle{
+  width: 80%;
+  border-bottom: 1rpx solid gray;
+}
+
+.rowmiddle_phone{
+  width: 45%;
+  border-bottom: 1rpx solid gray;
+}
+
+.rowright_phone{
+  width: 35%; 
+  display: flex;
+  justify-content: flex-end;
+  border-bottom: 1rpx solid gray;
+}
+
+.geo{
+  color: green;
+}
+
+.btn{
+  padding: 20rpx 50rpx 20rpx 50rpx;
+}

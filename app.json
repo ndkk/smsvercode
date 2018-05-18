@@ -5,7 +5,7 @@
   ],
   "plugins": {
     "smsvercode": {
-      "version": "dev",
+      "version": "1.0.1",
       "provider": "wx47025434eb041672"
     }
   }

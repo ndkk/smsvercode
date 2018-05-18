@@ -4,16 +4,16 @@
 
 具体调用方法：
 
-###一、添加插件 ###
+### 一、添加插件 ###
 
 在插件管理中点击“添加插件”，输入“**短信验证码模块**”, 则可以找到该插件，如下图：
 
 ![插件添加](https://mmbiz.qpic.cn/mmbiz_png/Sj1Ws3AzCj31gslrRAvibI6eg0OGyvXKeLHaO1cKjygLyvWvblgK0WvGSF8LAUWLwia0v5exbialr40BYGKwELmKA/640?wx_fmt=png)
 
 
-###二、小程序中集成插件###
+### 二、小程序中集成插件 ###
 
-####1、直接使用组件####
+#### 1、直接使用组件 ####
 
 使用后的效果如下图：
 
@@ -21,7 +21,7 @@
 
 调用步骤：
 
-#####1）在app.json文件中进行插件引用#####
+##### 1）在app.json文件中进行插件引用 #####
 
 	"plugins": {
 		"smsvercode": {
@@ -30,7 +30,7 @@
 		}	
 	}
 
-#####2）page页放入以下代码#####
+##### 2）page页放入以下代码 #####
 
 js：
 
@@ -54,10 +54,10 @@ wxml：
 
 
 
-####2、调用组件中的api接口####
+#### 2、调用组件中的api接口 ####
 共有两个接口`getvercode`、`checkvercode`：
 
-#####1）获取验证码接口，使用方法如下（其中app.json中加载组件的方法同直接使用组件，这里不再重复）：#####
+##### 1）获取验证码接口，使用方法如下（其中app.json中加载组件的方法同直接使用组件，这里不再重复）： #####
  
 	var smsvercode= requirePlugin("smsvercode");  //引用短信校验码插件
 
@@ -74,7 +74,7 @@ wxml：
       }
     });
 
-#####2）校验验证码接口，使用方法如下：#####
+##### 2）校验验证码接口，使用方法如下： #####
 
 	var smsvercode= requirePlugin("smsvercode");  //引用短信校验码插件
 

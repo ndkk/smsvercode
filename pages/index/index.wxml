@@ -1,1 +1,1 @@
-<smsvercode bindformsubmit="myevent" button-text="下一步" />
+<smsvercode bindformsubmit="myevent" ak="{{ak}}" button-text="下一步" />

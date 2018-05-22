@@ -6,7 +6,6 @@
 
 
 
-具体调用方法：
 
 ### 一、添加插件 ###
 
@@ -21,7 +20,7 @@
 
 使用后的效果如下图：
 
-![手机认证界面](https://mmbiz.qpic.cn/mmbiz_png/Sj1Ws3AzCj31gslrRAvibI6eg0OGyvXKeyWs7bVb0ZP4Yhk88dLhuOTGUiczOFBLIicOJCIp5icibGdkDp8ia1uhicpFQ/640?wx_fmt=png)
+![手机认证界面](https://mmbiz.qpic.cn/mmbiz_png/Sj1Ws3AzCj1bZbTjSdUJt8lnb5iamQBibYVcicHaOKQRqvcZqnG9oUAS4XToY7euOL6PA0JsHdWnpXAyK2KVWOh6Q/640?wx_fmt=png)
 
 调用步骤：
 
@@ -29,39 +28,33 @@
 
 	"plugins": {
 		"smsvercode": {
-		"version": "1.0.1",
+		"version": "1.0.2",
 		"provider": "wx47025434eb041672"
 		}	
 	}
 
 ##### 2）page页放入以下代码 #####
 
-js：
-
-`const smsvercode = requirePlugin('smsvercode');`
-
-
 json：
 
 	{
   		"usingComponents": {
     		"smsvercode": "plugin://smsvercode/smsvercode"
-  		},
-  		"navigationBarTitleText": "手机认证"
+  		}
 	}
 
 wxml：
 
-`<smsvercode bindformsubmit="myevent" button-text="下一步" />`
+`<smsvercode />`
 
 则可以直接使用。
 
 
 
 #### 2、调用组件中的api接口 ####
-共有两个接口`getvercode`、`checkvercode`：
+共有两个接口`getvercodevip`、`checkvercode`：
 
-`getvercode` 主要功能是获取短信验证码，只有一个入参phonenumber，返回errno为0表示成功，其他表示失败
+`getvercodevip` 主要功能是获取短信验证码，有两个参数ak, phonenumber，返回errno为0表示成功，其他表示失败
 
 `checkvercode` 主要功能是校验验证码，有两个参数phonenumber和vercode，返回errno为0表示校验成功，其他表示失败
 
@@ -71,7 +64,58 @@ wxml：
  
 	var smsvercode= requirePlugin("smsvercode");  //引用短信校验码插件
 
-	smsvercode.getvercode(this.data.phonenumber, function(res){
+	smsvercode.getvercodevip(this.data.ak, this.data.phonenumber, function(res){ 
+    });
+
+##### 2）校验验证码接口，使用方法如下： #####
+
+	var smsvercode= requirePlugin("smsvercode");  //引用短信校验码插件
+
+	smsvercode.checkvercode(phonenumber, vercode, function(res){
+    });
+
+以上就是api调用功能，可以灵活搭配在自己的系统中。
+
+
+### 三、组件属性 ###
+
+属性：
+
+	| 字段        | 类型    |  含义  |
+	| --------   | -----:   | :----: |
+	| buttonText | String   |   替代button文本 |
+	| ak         | String   |   商业用户使用，免费用户填写为空    |	
+
+按钮点击输出：
+
+	| 字段        | 包含内容    |  含义  |
+	| --------   | -----:   | :----: |
+	| e.detail | 组件内部的触发事件   |  将组件内的触发事件返回给调用者  |	
+
+调用方法：
+
+	<smsvercode bindformsubmit="myevent" ak="{{ak}}" button-text="下一步" />
+
+### 四、API详解 ###
+
+1、getvercodevip：
+
+入参：
+
+	| 字段        | 类型    |  含义  |
+	| --------   | -----:   | :----: |	
+	| ak         | String   |   商业用户使用，免费用户填写为空    |	
+	| phonenumber | String   |   手机号码 |
+
+出参：
+	
+	| 字段        | 类型    |  含义  |
+	| --------   | -----:   | :----: |
+	| errno | String   |  0：成功 1：DB错误 4：ak值无效 8：频繁发送 10：电话号码无效|
+
+调用方法：
+
+	plugin.getvercodevip(this.data.ak, this.data.phonenumber, function(res){
       if (res.errno == "0"){
         wx.showToast({
           title: '发送成功',
@@ -84,11 +128,24 @@ wxml：
       }
     });
 
-##### 2）校验验证码接口，使用方法如下： #####
+2、checkvercode：
 
-	var smsvercode= requirePlugin("smsvercode");  //引用短信校验码插件
+入参：
 
-	smsvercode.checkvercode(phonenumber, vercode, function(res){
+	| 字段        | 类型    |  含义  |
+	| --------   | -----:   | :----: |		
+	| phonenumber | String   |   手机号码 |
+	| vercode     | String   |   验证码    |	
+
+出参：
+	
+	| 字段        | 类型    |  含义  |
+	| --------   | -----:   | :----: |
+	| errno | String   |  0：成功 3：验证码不正确|
+
+调用方法：
+
+	plugin.checkvercode(phonenumber, vercode, function(res){
       if (res.errno == "0"){
         wx.showToast({
           title: '校验成功',
@@ -101,13 +158,48 @@ wxml：
       }
     });
 
-以上就是api调用功能，可以灵活搭配在自己的系统中。
+
+### 五、特殊流程：定制公司抬头 ###
+
+定制公司抬头需要付费并在调用接口时需填写AK值，具体费用如下：
+
+	| 短信条数   | 费用    |  每条价格  |
+	| --------  | -----:  | :----: 	|
+	| 500条 		| 40元    |  0.08元/条 |
+	| 2000条 	| 120元   |  0.06元/条 |  hot!
+	| 5000条 	| 275元   |  0.055元/条 |
+	| 10000条 	| 500元   |  0.05元/条 |
+
+第一次注册赠送20条短信。
+
+具体查看，可以在小程序中搜索“**短信定时提醒**”，
+
+或者扫描下面的二维码进入“短信定时提醒”：
+![短信定时提醒](https://mmbiz.qlogo.cn/mmbiz_png/Sj1Ws3AzCj244vLE4zrLjN3icCJiajPjPt5aGA9bVTsw8PEABhIOss5tgWm1QbFGk9TFqsOfx7VzCEtwc0eQzibsw/0?wx_fmt=png)
+
+进入后按照“**我的**”>"**发现**">"**短信验证码模块**"访问，可以查看到类似下面的界面：
+
+
+![](https://mmbiz.qlogo.cn/mmbiz_png/Sj1Ws3AzCj244vLE4zrLjN3icCJiajPjPt9sbkEB2TceQbTVibeWu4iagyKGtEfmPkZYEcE5Kd2mNWIHqqzv4tyCibg/0?wx_fmt=png)
+
+其中：
+
+第一行，表示您当前拥有的短信数。
+
+第二行，表示可以充值的类型。
+
+第三行，表示定制的公司抬头，这里可以输入公司抬头，提交审核，我们会尽快进行审核
+
+第四行，AK值，需放到开发接口getvercodevip中进行调用
+
+**当第三行的公司抬头审核通过后，业务将会开通。**
+
+**注意：AK值一旦设定，不要轻易更换，如果更换会造成短信验证码无法触发。**
+**另外ak值也不要泄露，泄露可能造成被他人使用该接口**
 
 说明：
 
-发送的短信抬头是以【精发科技】作为抬头的，如果不变更抬头完全免费。
-如果需要更新为自己的公司抬头，前20条短信免费，后面的短信按照采购量计价，最低可至**5分/条**，
-有这样需求的公司或个人可以联系我，手机号码17302856632，可以直接加微信，或QQ号 1438704083。
+定制公司抬头有这样需求的公司或个人可以联系我，直接加QQ号 1438704083。
 
 **有了这个功能可以快速帮助您实现手机实名认证功能，避免后台开发功能的重复投入。**
 

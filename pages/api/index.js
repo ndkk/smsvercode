@@ -3,7 +3,8 @@ var plugin = requirePlugin("smsvercode");  //引用短信校验码插件
 Page({
 
   data: {
-    phonenumber: ''
+    phonenumber: '',
+    ak: ''  //建议从数据库内获取
   },
 
   bindphonenumber: function (e) {    
@@ -12,7 +13,7 @@ Page({
 
   //获取短信验证码
   getcode: function(e){    
-    plugin.getvercode(this.data.phonenumber, function(res){
+    plugin.getvercodevip(this.data.ak, this.data.phonenumber, function(res){
       if (res.errno == "0"){
         wx.showToast({
           title: '发送成功',

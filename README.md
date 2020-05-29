@@ -1,7 +1,8 @@
 ## 短信验证码模块——一个方便使用的手机实名认证微信小程序插件 ##
 
 ## 通告：本插件免费功能已取消。##
-
+## 注意：调用时“调试基础库”要使用最新的版本
+https://img-blog.csdnimg.cn/20200529162335261.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTIzMjkyOTQ=,size_16,color_FFFFFF,t_70 ##
 
 ### 一、添加插件 ###
 

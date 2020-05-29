@@ -7,7 +7,7 @@
 
 在插件管理中点击“添加插件”，输入“**短信验证码模块**”, 则可以找到该插件，如下图：
 
-![插件添加](https://img-blog.csdnimg.cn/20200529162335261.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTIzMjkyOTQ=,size_16,color_FFFFFF,t_70)
+![插件添加](https://camo.githubusercontent.com/4b596e6d1e2dc52cced694b2c9185771c50c132d/68747470733a2f2f6d6d62697a2e717069632e636e2f6d6d62697a5f706e672f536a31577333417a436a333167736c72524176696249366567304f477976584b654c48614f31634b6a79674c79765776626c674b305776475346384c4155574c77696130763565786269616c7234304259474b77454c6d4b412f3634303f77785f666d743d706e67)
 
 
 ### 二、小程序中集成插件 ###

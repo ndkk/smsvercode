@@ -1,14 +1,13 @@
 ## 短信验证码模块——一个方便使用的手机实名认证微信小程序插件 ##
 
 ## 通告：本插件免费功能已取消。##
-## 注意：调用时“调试基础库”要使用最新的版本
-https://img-blog.csdnimg.cn/20200529162335261.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTIzMjkyOTQ=,size_16,color_FFFFFF,t_70 ##
+
 
 ### 一、添加插件 ###
 
 在插件管理中点击“添加插件”，输入“**短信验证码模块**”, 则可以找到该插件，如下图：
 
-![插件添加](https://mmbiz.qpic.cn/mmbiz_png/Sj1Ws3AzCj31gslrRAvibI6eg0OGyvXKeLHaO1cKjygLyvWvblgK0WvGSF8LAUWLwia0v5exbialr40BYGKwELmKA/640?wx_fmt=png)
+![插件添加](https://img-blog.csdnimg.cn/20200529162335261.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3UwMTIzMjkyOTQ=,size_16,color_FFFFFF,t_70)
 
 
 ### 二、小程序中集成插件 ###
@@ -203,5 +202,8 @@ wxml：
 
 
 如果需要直接通过web调用API接口的，可以直接联系1438704083@qq.com
+
+## 注意事项：调用时“调试基础库”要使用最新的版本##
+![调试基础库选择](https://img-blog.csdnimg.cn/20200529162335261.png)
 
 
